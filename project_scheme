@@ -1,0 +1,1 @@
+flowerweb/||-- src/          Pascal source|-- web/          HTML, CSS, JS|-- config/       Default configuration|-- scripts/|    deploy.sh|     install.sh|     logs.sh||-- systemd/|     flowerweb.service|     mediamtx.service||-- hardware/|     KiCad|     Datasheets||-- docs/

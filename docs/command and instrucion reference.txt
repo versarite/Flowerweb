@@ -1,0 +1,168 @@
+============================================================
+FLOWERWEB DEVELOPMENT COMMAND REFERENCE
+============================================================
+
+SSH
+------------------------------------------------------------
+
+ssh pi@192.168.43.218
+Connect to the Raspberry Pi using the current user's SSH key.
+
+ssh -v pi@192.168.43.218
+Verbose SSH connection. Useful for diagnosing authentication problems.
+
+Important:
+Do NOT use "sudo ssh".
+Doing so causes SSH to use /root/.ssh instead of ~/.ssh.
+
+------------------------------------------------------------
+
+DEPLOYMENT
+------------------------------------------------------------
+
+./scripts/deploy.sh
+Synchronize the project, compile remotely, install the executable and restart the service.
+
+------------------------------------------------------------
+
+RSYNC
+------------------------------------------------------------
+
+rsync -av src/    pi@192.168.43.218:/home/flowerweb/src/
+Synchronize Pascal source files.
+
+rsync -av web/    pi@192.168.43.218:/home/flowerweb/web/
+Synchronize HTML, CSS and JavaScript.
+
+rsync -av config/ pi@192.168.43.218:/home/flowerweb/config/
+Synchronize configuration files.
+
+------------------------------------------------------------
+
+BUILD
+------------------------------------------------------------
+
+cd /home/flowerweb/src
+
+rm -f flowerweb
+Delete the previous executable before compiling.
+
+lazbuild flowerweb.lpi
+Compile the Lazarus project.
+
+cp -f flowerweb ../bin/
+Install the new executable.
+
+------------------------------------------------------------
+
+SYSTEMD
+------------------------------------------------------------
+
+sudo systemctl restart flowerweb
+Restart the FlowerWeb service.
+
+sudo systemctl status flowerweb --no-pager
+Display the service status without invoking the pager.
+
+systemctl cat flowerweb
+Display the installed service file.
+
+systemctl cat mediamtx
+Display the MediaMTX service file.
+
+sudo systemctl daemon-reload
+Reload all modified service files.
+
+------------------------------------------------------------
+
+SUDO CONFIGURATION
+------------------------------------------------------------
+
+sudo -l
+Display all commands the current user may execute via sudo.
+
+sudo visudo -f /etc/sudoers.d/flowerweb
+Create or edit the FlowerWeb sudo policy.
+
+------------------------------------------------------------
+
+SERVICE FILES
+------------------------------------------------------------
+
+FlowerWeb:
+/etc/systemd/system/flowerweb.service
+
+MediaMTX:
+/etc/systemd/system/mediamtx.service
+
+Project archive:
+~/Projects/flowerweb/services/
+
+------------------------------------------------------------
+
+MEDIA MTX
+------------------------------------------------------------
+
+sudo nano /etc/systemd/system/mediamtx.service
+
+Recommended addition:
+
+TimeoutStopSec=10
+
+After editing:
+
+sudo systemctl daemon-reload
+sudo systemctl restart mediamtx
+
+------------------------------------------------------------
+
+SYSTEM INFORMATION
+------------------------------------------------------------
+
+which systemctl
+Display the absolute path of the systemctl executable.
+
+------------------------------------------------------------
+
+LOGS
+------------------------------------------------------------
+
+journalctl -b -1 -e
+Display the end of the previous boot log.
+Useful for diagnosing slow shutdowns and reboot delays.
+
+journalctl -b -1 | grep -i "stop job"
+Search the previous shutdown log for services delaying system shutdown.
+
+------------------------------------------------------------
+
+PROJECT STRUCTURE
+------------------------------------------------------------
+
+flowerweb/
+│
+├── src/
+├── web/
+├── config/
+├── services/
+│   ├── flowerweb.service
+│   └── mediamtx.service
+├── scripts/
+└── bin/            (Raspberry Pi only)
+
+------------------------------------------------------------
+
+PROJECT UNITS
+------------------------------------------------------------
+
+flowerweb.lpr    Application startup
+
+uconfig          Configuration
+
+uwebfiles        HTML/CSS/JS delivery
+
+uapi             REST API
+
+usysinfo         CPU temperature and IP address
+
+ulog             Logging

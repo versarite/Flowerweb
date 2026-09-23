@@ -1,0 +1,4 @@
+(fp_lib_table
+  (version 7)
+  (lib (name "flowerweb")(type "KiCad")(uri "${KIPRJMOD}/flowerweb.pretty")(options "")(descr "FlowerWeb HAT footprints"))
+)

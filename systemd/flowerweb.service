@@ -1,0 +1,18 @@
+[Unit]
+Description=Flower Web Controller
+After=network-online.target mediamtx.service
+Requires=mediamtx.service
+
+[Service]
+Type=simple
+User=pi
+WorkingDirectory=/home/flowerweb/bin
+ExecStartPre=/bin/sleep 2
+ExecStart=/home/flowerweb/bin/flowerweb
+# Always close the valve when the service stops or crashes
+ExecStopPost=/home/flowerweb/bin/flowerweb --relay-off
+Restart=always
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target

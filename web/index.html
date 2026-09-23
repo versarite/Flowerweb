@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Config.ServerName</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+
+  <div class="card">
+
+    <h2>Config.ServerName</h2>
+
+    <div class="stats-grid">
+      <div class="stat-box">Pi IP Address<div id="pi-ip" class="stat-val">–</div></div>
+      <div class="stat-box">CPU Temperature<div id="pi-temp" class="stat-val">–</div></div>
+    </div>
+
+    <div class="stream-container">
+      <iframe id="cameraFeed" scrolling="no" allowfullscreen></iframe>
+    </div>
+
+    <br>
+    <label for="pulseTime">Valve opening time (ms)</label>
+    <input type="number" id="pulseTime" min="1000" max="60000" step="1000" value="5000">
+
+    <button id="waterBtn" class="btn" onclick="triggerRelay()">ACTIVATE RELAY</button>
+    <button class="btn btn-secondary" onclick="rebootPi()">REBOOT PI</button>
+
+    <div class="timer-box">
+      <label for="timerHours">Automatic Watering</label>
+      <br><br>
+      <select id="timerHours">
+        <option value="0">Disabled</option>
+        <option value="24">Every 24 hours</option>
+        <option value="48">Every 48 hours</option>
+        <option value="72">Every 72 hours</option>
+      </select>
+    </div>
+
+    <p id="timerStatus" class="status-text">&nbsp;</p>
+    <p id="status" class="status-text">System Ready</p>
+
+  </div>
+
+  <script src="/app.js"></script>
+</body>
+</html>

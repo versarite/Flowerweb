@@ -1,0 +1,13 @@
+# Lazarus / FPC build output
+src/lib/
+src/backup/
+src/flowerweb
+*.o
+*.ppu
+*.compiled
+*.lps
+bin/
+
+# Runtime
+logs/
+*.log

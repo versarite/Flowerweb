@@ -1,0 +1,4 @@
+(sym_lib_table
+  (version 7)
+  (lib (name "flowerweb")(type "KiCad")(uri "${KIPRJMOD}/flowerweb.kicad_sym")(options "")(descr "FlowerWeb HAT symbols"))
+)

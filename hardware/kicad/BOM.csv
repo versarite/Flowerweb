@@ -1,0 +1,16 @@
+Ref,Qty,Value,Part / MPN,Description,Footprint
+C1,1,470uF 10V,,"Electrolytic, 10 mm dia, 5 mm pitch, >=10 V",Capacitor_THT:CP_Radial_D10.0mm_P5.00mm
+C2,1,100uF 35V,,"Electrolytic, 8 mm dia, 3.5 mm pitch, >=35 V",Capacitor_THT:CP_Radial_D8.0mm_P3.50mm
+D1,1,1.5KE6V8A,1.5KE6V8A,"TVS 1500 W, 5.8 V standoff, unidirectional",Diode_THT:D_DO-201AE_P15.24mm_Horizontal
+D2,1,1N4007,1N4007,Flyback diode across the valve coil,Diode_THT:D_DO-41_SOD81_P10.16mm_Horizontal
+F1,1,MF-RG600 (6A),Bourns MF-RG600,"PTC resettable fuse, Ihold 6 A, 16 V",Fuse:Fuse_Bourns_MF-RG600
+H1 H2 H3 H4,4,M2.5,,Pi mounting hole,MountingHole:MountingHole_2.7mm_M2.5
+J1,1,PJ-063AH,CUI/Same Sky PJ-063AH,"5 V 6 A input jack, 5.5x2.1 mm, rated 8 A",Connector_BarrelJack:BarrelJack_CUI_PJ-063AH_Horizontal
+J2,1,PJ-063AH,CUI/Same Sky PJ-063AH,"Centre = +24 V, sleeve = switched (NOT ground)",Connector_BarrelJack:BarrelJack_CUI_PJ-063AH_Horizontal
+J3,1,Raspberry Pi 40-pin,2x20 female header 2.54 mm (8.5 mm),Mounted on the bottom side,Connector_PinSocket_2.54mm:PinSocket_2x20_P2.54mm_Vertical
+J4,1,STATUS LED,1x2 pin header 2.54 mm,"Pin 1 = LED anode (+), pin 2 = cathode",Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical
+Q1,1,TIP121,TIP121,"NPN Darlington 80 V 5 A, TO-220",Package_TO_SOT_THT:TO-220-3_Vertical
+R1,1,1k,,0.25 W,Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal
+R2,1,10k,,"0.25 W, keeps the valve off while the Pi boots",Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal
+R3,1,220,,"0.25 W, LED current approx. 6 mA",Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal
+U1,1,MT3608 module,MT3608 DC-DC step-up module,"2 A boost module, 37x17 mm, adjust to 24.0 V",flowerweb:MT3608_Module
