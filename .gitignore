@@ -11,3 +11,9 @@ bin/
 # Runtime
 logs/
 *.log
+
+# KiCad local files
+*.lck
+*.kicad_prl
+*-backups/
+fp-info-cache

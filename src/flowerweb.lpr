@@ -9,8 +9,27 @@ uses
   SysUtils, Classes, fphttpapp, httpdefs, httproute,
   uconfig, uwebfiles, uapi, ulog, uRelay;
 
+var
+  i : Integer;
+
 begin
   InitializeConfiguration;
+
+  // Command-line overrides (used by scripts/deploy-test.sh):
+  //   --simulate      never touch GPIO or reboot, only log
+  //   --port N        listen on another port
+  i := 1;
+  while i <= ParamCount do
+  begin
+    if ParamStr(i) = '--simulate' then
+      Config.Simulate := True
+    else if (ParamStr(i) = '--port') and (i < ParamCount) then
+    begin
+      Inc(i);
+      Config.HttpPort := StrToIntDef(ParamStr(i), Config.HttpPort);
+    end;
+    Inc(i);
+  end;
 
   // "flowerweb --relay-off" only closes the valve and exits.
   // systemd runs this after the service stops or crashes (ExecStopPost).
@@ -25,6 +44,8 @@ begin
       Halt(1);
   end;
 
+  if Config.Simulate then
+    LogInfo('*** SIMULATION MODE: GPIO and reboot are disabled ***');
   LogInfo('Executable = ' + ParamStr(0));
   LogInfo('InstallRoot = ' + Config.InstallRoot);
 

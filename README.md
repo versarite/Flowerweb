@@ -1,5 +1,5 @@
 # FlowerWeb
-# Written with support from CatGPT and Claude
+# Written with support from ChatGPT and Claude
 
 
 A small web-controlled watering system for a Raspberry Pi. Open the web page from anywhere (for example over Tailscale), watch your plants on a live camera, water them with one click, or let a timer do it every 24, 48 or 72 hours.
@@ -93,6 +93,16 @@ Development happens on a PC. `scripts/deploy.sh` copies the source to the Pi ove
 ```
 
 Set `PI_HOST` in the script to your Pi's address. Password-free SSH login is described in `docs/`.
+
+### Testing without touching the live system
+
+```bash
+./scripts/deploy-test.sh          # copy, compile and start a test copy on port 8081
+./scripts/deploy-test.sh log      # follow its log
+./scripts/deploy-test.sh stop     # stop it
+```
+
+The test copy runs from `~/flowerweb-test` on the Pi in **simulation mode**. It only logs what it would do and never switches the relay or reboots the Pi. The live service, its folder and port 8080 are left alone. An orange banner on the page shows you're on the test copy. Simulation mode can also be switched on with `Simulate=1` in the ini or `--simulate` on the command line.
 
 The Pi's `config/flowerweb.ini` is copied only the first time. After that, deploy leaves it alone so the settings you made from the web page are kept.
 

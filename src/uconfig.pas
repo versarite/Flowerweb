@@ -28,6 +28,7 @@ type
     // Relay
     RelayPin       : Integer;
     RelayActiveLow : Boolean;   // True = relay switches ON when pin goes LOW
+    Simulate       : Boolean;   // True = never touch GPIO or reboot, only log (test mode)
     RelayTimeMS    : Integer;   // valve opening time
     MaxPulseTimeMS : Integer;   // safety ceiling for RelayTimeMS
 
@@ -120,6 +121,7 @@ begin
 
     Config.RelayPin       := Ini.ReadInteger('Relay', 'Pin', 18);
     Config.RelayActiveLow := Ini.ReadBool   ('Relay', 'ActiveLow', False);
+    Config.Simulate       := Ini.ReadBool   ('Relay', 'Simulate', False);
     Config.MaxPulseTimeMS := Ini.ReadInteger('Relay', 'MaxPulseTimeMS', DEFAULT_MAX_PULSE);
     if Config.MaxPulseTimeMS < MIN_PULSE_MS then
       Config.MaxPulseTimeMS := MIN_PULSE_MS;

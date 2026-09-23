@@ -68,6 +68,10 @@ function updateTelemetry()
         .then(data =>
         {
             setText("pi-ip", data.ip);
+
+            const banner = document.getElementById("simBanner");
+            if (banner)
+                banner.hidden = !data.simulate;
             setText("pi-temp", data.temp);
 
             if (firstStatus)
@@ -152,7 +156,13 @@ function rebootPi()
 
     fetch("/api/reboot", { method: "POST" })
         .then(response => response.json())
-        .then(() => setStatus("Rebooting… the page will reconnect in about a minute", "#f39c12"))
+        .then(data =>
+        {
+            if (data.status === "simulated")
+                setStatus("Simulation: reboot skipped", "#f39c12");
+            else
+                setStatus("Rebooting… the page will reconnect in about a minute", "#f39c12");
+        })
         .catch(err => console.error(err));
 }
 

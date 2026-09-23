@@ -87,6 +87,7 @@ begin
   Obj.Add('wateringSecondsLeft', WateringSecondsLeft);
   Obj.Add('cameraName',       Config.CameraName);
   Obj.Add('cameraPort',       Config.CameraPort);
+  Obj.Add('simulate',         Config.Simulate);
   SendJSON(Response, 200, Obj);
 end;
 
@@ -202,6 +203,13 @@ begin
 
   LogInfo('Reboot requested by ' + Request.RemoteAddr);
   RelayOff;
+
+  if Config.Simulate then
+  begin
+    LogInfo('[SIMULATE] reboot skipped');
+    SendJSON(Response, 200, TJSONObject.Create(['status', 'simulated']));
+    Exit;
+  end;
 
   SendJSON(Response, 200, TJSONObject.Create(['status', 'rebooting']));
 

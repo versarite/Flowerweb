@@ -73,6 +73,13 @@ begin
   Result := False;
   PinHigh := RelayOn xor Config.RelayActiveLow;
 
+  if Config.Simulate then
+  begin
+    LogInfo('[SIMULATE] GPIO ' + IntToStr(Config.RelayPin) + ' would be set ' +
+            BoolToStr(PinHigh, 'high', 'low') + ' (valve ' + BoolToStr(RelayOn, 'OPEN', 'CLOSED') + ')');
+    Exit(True);
+  end;
+
   Proc := TProcess.Create(nil);
   try
     try
