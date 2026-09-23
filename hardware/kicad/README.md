@@ -29,7 +29,7 @@ Written in KiCad 7 format, so it opens in KiCad 7, 8 and 9. All other footprints
 ## Before ordering
 
 1. Open `flowerweb_hat.kicad_pro` in KiCad.
-2. In the PCB editor press **B** (Fill all zones). The copper pours are saved unfilled.
+2. In the PCB editor press **B** (Fill all zones). The copper pours are saved unfilled. Every connection, GND and 5V included, is also made by traces, so there are no ratsnest lines even before filling. The pours add copper area for the 5 A current, so always fill them before ordering.
 3. Run **Inspect → Design Rules Checker** and, in the schematic, **Inspect → Electrical Rules Checker**. The board was checked with independent clearance, pour and connectivity checks while it was being made, but it has not yet been opened in KiCad itself. Run both checks once before ordering.
 4. Optional: **Tools → Update Footprints from Library** adds the 3D models for the 3D viewer. Afterwards, check that J3's pin 1 is still next to mounting hole H1.
 5. Plot Gerbers and drill files (**File → Fabrication Outputs**). The board uses standard rules (0.2 mm clearance, 0.3 mm tracks, 0.4 mm vias) that every PCB fab supports. The MT3608 pads have **slotted holes**, which most fabs (JLCPCB, PCBWay, Aisler) make at no extra cost.
@@ -46,3 +46,4 @@ Written in KiCad 7 format, so it opens in KiCad 7, 8 and 9. All other footprints
 ## License
 
 PolyForm Noncommercial 1.0.0. See `LICENSE.md` in the project root.
+Copyright DL1BWA 2026

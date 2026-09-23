@@ -28,7 +28,7 @@ A ready-made **Raspberry Pi HAT** for all of this is in [`hardware/kicad`](hardw
 
 > ⚠️ The relay switches the valve's supply, not mains power. If your valve or pump runs on mains voltage, use a suitably rated relay and have the wiring checked by someone qualified.
 
-The KiCAD board is not routed. It is meant as a suggestion.  
+The KiCAD hat board meant as a suggestion. No frills here, only GPIO18 is connected.   
 
 ## Project layout
 
