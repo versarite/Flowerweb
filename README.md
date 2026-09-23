@@ -1,6 +1,7 @@
 # FlowerWeb
 # Written with support from CatGPT and Claude
 
+
 A small web-controlled watering system for a Raspberry Pi. Open the web page from anywhere (for example over Tailscale), watch your plants on a live camera, water them with one click, or let a timer do it every 24, 48 or 72 hours.
 
 The server is written in Free Pascal / Lazarus and runs as a systemd service. The camera stream is served by [MediaMTX](https://github.com/bluenviron/mediamtx).
@@ -26,6 +27,8 @@ The server is written in Free Pascal / Lazarus and runs as a systemd service. Th
 A ready-made **Raspberry Pi HAT** for all of this is in [`hardware/kicad`](hardware/kicad/README.md). It has a 5 V 6 A input jack, a 24 V step-up module, a TIP121 valve driver on GPIO 18, a 24 V valve jack and a status-LED header.
 
 > ⚠️ The relay switches the valve's supply, not mains power. If your valve or pump runs on mains voltage, use a suitably rated relay and have the wiring checked by someone qualified.
+
+The KiCAD board is not routed. It is meant as a suggestion.  
 
 ## Project layout
 
@@ -137,4 +140,4 @@ Close the valve by hand at any time:
 
 FlowerWeb is released under the [PolyForm Noncommercial License 1.0.0](LICENSE.md). You're free to use, study, change and share it for any **non-commercial** purpose: personal projects, hobby use, education, research, and charitable or public organisations. Commercial use is not permitted without the author's permission.
 
-Copyright (c) 2026 Aldo
+Copyright (c) 2026 DL1BWA
